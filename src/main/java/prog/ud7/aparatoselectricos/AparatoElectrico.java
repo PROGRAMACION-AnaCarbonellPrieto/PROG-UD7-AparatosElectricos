@@ -4,11 +4,13 @@
 
 package prog.ud7.aparatoselectricos;
 
+import prog.ud7.interfaces.Enchufable;
+
 /**
  *
  * @author Ana Carbonell Prieto
  */
-public abstract class AparatoElectrico {
+public abstract class AparatoElectrico implements Enchufable {
     private final boolean ENCENDIDA_CORRIENTE_DEFAULT = false;
     
     private String numSerie;
@@ -29,5 +31,15 @@ public abstract class AparatoElectrico {
                 (this.tieneCorrienteElectrica) ? "Con corriente eléctrica" : "Sin corriente eléctrica",
                 (this.estaEncendido) ? "Está encendido" : "No está encendido"
                 );
+    }
+
+    @Override
+    public void darEnergia() {
+        this.tieneCorrienteElectrica = true;
+    }
+
+    @Override
+    public void quitarEnergia() {
+        this.tieneCorrienteElectrica = false;
     }
 }
