@@ -19,8 +19,8 @@ public abstract class Electrodomestico extends AparatoElectrico {
     protected enum Color { BLANCO, NEGRO, ROJO, AZUL, GRIS };
     protected enum ConsumoEnergetico { A, B, C, D, E, F };
 
-    public Electrodomestico(String modelo, String marca, String numSerie, boolean tieneCorrienteElectrica, boolean estaEncendido) {
-        super(numSerie, tieneCorrienteElectrica, estaEncendido);
+    public Electrodomestico(String modelo, String marca, String numSerie, boolean tieneCorrienteElectrica) {
+        super(numSerie, tieneCorrienteElectrica, false);
         this.color = Color.BLANCO;
         this.consumo = ConsumoEnergetico.F;
         this.precio = 100;

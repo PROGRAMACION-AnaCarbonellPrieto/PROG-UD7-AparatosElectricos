@@ -11,8 +11,8 @@ package prog.ud7.aparatoselectricos;
 public class Lavadora extends Electrodomestico {
     private int carga;
     
-    public Lavadora(int carga, Color color, ConsumoEnergetico consumo, double precio, String modelo, String marca, int peso, String numSerie, boolean tieneCorrienteElectrica) {
-        super(color, consumo, precio, modelo, marca, peso, numSerie, tieneCorrienteElectrica, false);
+    public Lavadora(String modelo, String marca, String numSerie, boolean tieneCorrienteElectrica) {
+        super(modelo, marca, numSerie, tieneCorrienteElectrica);
         this.carga = 7;
     }
 

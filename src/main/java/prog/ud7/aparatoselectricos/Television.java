@@ -13,6 +13,13 @@ public class Television extends Electrodomestico {
     private boolean estaWifiHabilitado;
     private boolean estaConectadaAInternet;
 
+    public Television(String modelo, String marca, String numSerie, boolean tieneCorrienteElectrica) {
+        super(modelo, marca, numSerie, tieneCorrienteElectrica);
+        this.resolucion = 20;
+        this.estaWifiHabilitado = false;
+        this.estaConectadaAInternet = false;
+    }
+    
     public Television(int resolucion, boolean estaWifiHabilitado, boolean estaConectadaAInternet, Color color, ConsumoEnergetico consumo, double precio, String modelo, String marca, int peso, String numSerie, boolean tieneCorrienteElectrica, boolean estaEncendido) {
         super(color, consumo, precio, modelo, marca, peso, numSerie, tieneCorrienteElectrica, estaEncendido);
         this.resolucion = resolucion;
@@ -22,6 +29,6 @@ public class Television extends Electrodomestico {
 
     @Override
     public double obtenerPrecioVenta() {
-        return super.obtenerPrecioVenta();
+        return (this.resolucion > 40) ? super.obtenerPrecioVenta() * 1.3 : super.obtenerPrecioVenta();
     }
 }
