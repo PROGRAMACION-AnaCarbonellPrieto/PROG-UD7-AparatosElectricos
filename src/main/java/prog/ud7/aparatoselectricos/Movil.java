@@ -15,8 +15,8 @@ public class Movil extends Dispositivo {
     
     private enum Memoria { MB64, MB128, MB256, MB512, GB1, GB2 };
 
-    public Movil(Memoria memoria, String marca, String modelo, boolean conectadoAInteret, String numSerie, boolean tieneCorrienteElectrica, boolean estaEncendido) {
-        super(conectadoAInteret, numSerie, tieneCorrienteElectrica, estaEncendido);
+    public Movil(Memoria memoria, String marca, String modelo, String numSerie) {
+        super(numSerie);
         this.memoria = memoria;
         this.marca = marca;
         this.modelo = modelo;
