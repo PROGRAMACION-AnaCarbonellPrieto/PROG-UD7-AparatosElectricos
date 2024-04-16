@@ -10,9 +10,9 @@ package prog.ud7.aparatoselectricos;
  */
 public abstract class Dispositivo extends AparatoElectrico {
     private boolean conectadoAInteret;
-
-    public Dispositivo(boolean conectadoAInteret, String numSerie, boolean tieneCorrienteElectrica, boolean estaEncendido) {
-        super(numSerie, tieneCorrienteElectrica, estaEncendido);
-        this.conectadoAInteret = conectadoAInteret;
+    
+    public Dispositivo(String numSerie) {
+        super(numSerie, false, false);
+        this.conectadoAInteret = false;
     }
 }
