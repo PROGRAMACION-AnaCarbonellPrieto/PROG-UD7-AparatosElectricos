@@ -28,8 +28,8 @@ public abstract class Electrodomestico extends AparatoElectrico {
     private String marca;
     private int peso;
     
-    protected enum Color { BLANCO, NEGRO, ROJO, AZUL, GRIS };
-    protected enum ConsumoEnergetico { A, B, C, D, E, F };
+    public enum Color { BLANCO, NEGRO, ROJO, AZUL, GRIS };
+    public enum ConsumoEnergetico { A, B, C, D, E, F };
 
     public Electrodomestico(Color color, ConsumoEnergetico consumo, double precio, String modelo, String marca, int peso, String numSerie) {
         super(numSerie);
@@ -60,5 +60,19 @@ public abstract class Electrodomestico extends AparatoElectrico {
             default:
                 return this.precio + PRECIO_F;
         }
+    }
+    
+    @Override
+    public String toString() {
+        return String.format(
+                "%s, Marca: %s, Modelo:'%s', Tipo Consumo: %s, Color: %s, Precio Base: %.0f, Precio Final: %.1f",
+                super.toString(),
+                this.marca,
+                this.modelo,
+                this.consumo,
+                this.color,
+                this.precio,
+                obtenerPrecioVenta()
+                );
     }
 }

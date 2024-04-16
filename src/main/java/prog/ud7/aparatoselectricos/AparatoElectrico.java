@@ -20,4 +20,14 @@ public abstract class AparatoElectrico {
         this.tieneCorrienteElectrica = ENCENDIDA_CORRIENTE_DEFAULT;
         this.estaEncendido = ENCENDIDA_CORRIENTE_DEFAULT;
     }
+
+    @Override
+    public String toString() {
+        return String.format(
+                "Núm.Serie: %s (%s), %s",
+                this.numSerie,
+                (this.tieneCorrienteElectrica) ? "Con corriente eléctrica" : "Sin corriente eléctrica",
+                (this.estaEncendido) ? "Está encendido" : "No está encendido"
+                );
+    }
 }

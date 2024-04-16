@@ -37,4 +37,15 @@ public class Television extends Electrodomestico {
     public double obtenerPrecioVenta() {
         return (this.resolucion > RESOLUCION_MAX) ? super.obtenerPrecioVenta() * PORCENTAJE_PRECIO : super.obtenerPrecioVenta();
     }
+    
+    @Override
+    public String toString() {
+        return String.format(
+                "%s, %s, %s, Resolución: %d",
+                super.toString(),
+                (this.estaWifiHabilitado) ? "Wifi habilitado" : "Wifi deshabilitado",
+                (this.estaConectadaAInternet) ? "Conectado a Internet" : "No conectado a Internet",
+                this.resolucion
+                );
+    }
 }

@@ -17,4 +17,13 @@ public abstract class Dispositivo extends AparatoElectrico {
         super(numSerie);
         this.conectadoAInteret = INTERNET_DEFAULT;
     }
+    
+    @Override
+    public String toString() {
+        return String.format(
+                "%s, %s",
+                super.toString(),
+                (this.conectadoAInteret) ? "Conectado a Internet" : "No conectado a Internet"
+                );
+    }
 }

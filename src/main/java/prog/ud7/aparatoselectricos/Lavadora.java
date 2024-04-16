@@ -30,4 +30,13 @@ public class Lavadora extends Electrodomestico {
     public double obtenerPrecioVenta() {
         return (this.carga > CARGA_MAX) ? super.obtenerPrecioVenta() + AUMENTO_PRECIO : super.obtenerPrecioVenta();
     }
+    
+    @Override
+    public String toString() {
+        return String.format(
+                "%s, Carga: %d",
+                super.toString(),
+                this.carga
+                );
+    }
 }
