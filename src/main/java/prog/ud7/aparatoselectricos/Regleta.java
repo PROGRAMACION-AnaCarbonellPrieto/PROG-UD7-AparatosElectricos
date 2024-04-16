@@ -20,18 +20,50 @@ public class Regleta {
     }
     
     public boolean enchufar(Enchufable aparato) {
-        return false;
+        if (obtenerNumeroTomasLibres() == 0 || buscarAparato(aparato) != -1) return false;
+        
+        for (int i = 0; i < aparatos.length; i++) {
+            if (aparatos[i] == null) {
+                aparatos[i] = aparato;
+                aparato.darEnergia();
+                break;
+            }
+        }
+        
+        return true;
     }
     
     public boolean desenchufar(Enchufable aparato) {
+        int indice = buscarAparato(aparato);
+        
+        if (indice != -1) {
+            aparatos[indice] = null;
+            aparato.quitarEnergia();
+            return true;
+        }
+        
         return false;
     }
     
     public int obtenerNumeroTomasLibres() {
-        return -1;
+        int contador = 0;
+        
+        for (Enchufable aparato: aparatos) {
+            if (aparato == null) contador++;
+        }
+        
+        return contador;
     }
     
     public void listarConectados() {
         
+    }
+    
+    private int buscarAparato(Enchufable aparato) {
+        for (int i = 0; i < aparatos.length; i++) {
+            if (aparatos[i].equals(aparato)) return i;
+        }
+        
+        return -1;
     }
 }
