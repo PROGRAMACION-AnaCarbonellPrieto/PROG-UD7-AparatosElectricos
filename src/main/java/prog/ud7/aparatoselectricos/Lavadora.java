@@ -9,20 +9,25 @@ package prog.ud7.aparatoselectricos;
  * @author Ana Carbonell Prieto
  */
 public class Lavadora extends Electrodomestico {
+    private final int CARGA_DEFAULT = 7;
+    
+    private final int CARGA_MAX = 10;
+    private final int AUMENTO_PRECIO = 50;
+    
     private int carga;
     
-    public Lavadora(String modelo, String marca, String numSerie, boolean tieneCorrienteElectrica) {
-        super(modelo, marca, numSerie, tieneCorrienteElectrica);
-        this.carga = 7;
-    }
-
-    public Lavadora(int carga, Color color, ConsumoEnergetico consumo, double precio, String modelo, String marca, int peso, String numSerie, boolean tieneCorrienteElectrica, boolean estaEncendido) {
-        super(color, consumo, precio, modelo, marca, peso, numSerie, tieneCorrienteElectrica, estaEncendido);
+    public Lavadora(int carga, Color color, ConsumoEnergetico consumo, double precio, String modelo, String marca, int peso, String numSerie) {
+        super(color, consumo, precio, modelo, marca, peso, numSerie);
         this.carga = carga;
+    }
+    
+    public Lavadora(String modelo, String marca, String numSerie) {
+        super(modelo, marca, numSerie);
+        this.carga = CARGA_DEFAULT;
     }
 
     @Override
     public double obtenerPrecioVenta() {
-        return (this.carga > 10) ? super.obtenerPrecioVenta() + 50 : super.obtenerPrecioVenta();
+        return (this.carga > CARGA_MAX) ? super.obtenerPrecioVenta() + AUMENTO_PRECIO : super.obtenerPrecioVenta();
     }
 }

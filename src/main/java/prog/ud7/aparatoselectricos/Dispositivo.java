@@ -9,10 +9,12 @@ package prog.ud7.aparatoselectricos;
  * @author Ana Carbonell Prieto
  */
 public abstract class Dispositivo extends AparatoElectrico {
+    private final boolean INTERNET_DEFAULT = false;
+    
     private boolean conectadoAInteret;
     
     public Dispositivo(String numSerie) {
-        super(numSerie, false, false);
-        this.conectadoAInteret = false;
+        super(numSerie);
+        this.conectadoAInteret = INTERNET_DEFAULT;
     }
 }

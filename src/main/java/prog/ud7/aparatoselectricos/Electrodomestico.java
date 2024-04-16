@@ -9,6 +9,18 @@ package prog.ud7.aparatoselectricos;
  * @author Ana Carbonell Prieto
  */
 public abstract class Electrodomestico extends AparatoElectrico {
+    private final static Color COLOR_DEFAULT = Color.BLANCO;
+    private final static ConsumoEnergetico CONSUMO_DEFAULT = ConsumoEnergetico.F;
+    private final static double PRECIO_DEFAULT = 100;
+    private final static int PESO_DEFAULT = 5;
+    
+    private final int PRECIO_A = 100;
+    private final int PRECIO_B = 80;
+    private final int PRECIO_C = 60;
+    private final int PRECIO_D = 50;
+    private final int PRECIO_E = 30;
+    private final int PRECIO_F = 10;
+    
     private Color color;
     private ConsumoEnergetico consumo;
     private double precio;
@@ -19,18 +31,8 @@ public abstract class Electrodomestico extends AparatoElectrico {
     protected enum Color { BLANCO, NEGRO, ROJO, AZUL, GRIS };
     protected enum ConsumoEnergetico { A, B, C, D, E, F };
 
-    public Electrodomestico(String modelo, String marca, String numSerie, boolean tieneCorrienteElectrica) {
-        super(numSerie, tieneCorrienteElectrica, false);
-        this.color = Color.BLANCO;
-        this.consumo = ConsumoEnergetico.F;
-        this.precio = 100;
-        this.modelo = modelo;
-        this.marca = marca;
-        this.peso = 5;
-    }
-    
-    public Electrodomestico(Color color, ConsumoEnergetico consumo, double precio, String modelo, String marca, int peso, String numSerie, boolean tieneCorrienteElectrica, boolean estaEncendido) {
-        super(numSerie, tieneCorrienteElectrica, estaEncendido);
+    public Electrodomestico(Color color, ConsumoEnergetico consumo, double precio, String modelo, String marca, int peso, String numSerie) {
+        super(numSerie);
         this.color = color;
         this.consumo = consumo;
         this.precio = precio;
@@ -39,20 +41,24 @@ public abstract class Electrodomestico extends AparatoElectrico {
         this.peso = peso;
     }
     
+    public Electrodomestico(String modelo, String marca, String numSerie) {
+        this(COLOR_DEFAULT, CONSUMO_DEFAULT, PRECIO_DEFAULT, modelo, marca, PESO_DEFAULT, numSerie);
+    }
+    
     public double obtenerPrecioVenta() {
         switch (this.consumo) {
             case A:
-                return this.precio + 100;
+                return this.precio + PRECIO_A;
             case B:
-                return this.precio + 80;
+                return this.precio + PRECIO_B;
             case C:
-                return this.precio + 60;
+                return this.precio + PRECIO_C;
             case D:
-                return this.precio + 50;
+                return this.precio + PRECIO_D;
             case E:
-                return this.precio + 30;
+                return this.precio + PRECIO_E;
             default:
-                return this.precio + 10;
+                return this.precio + PRECIO_F;
         }
     }
 }

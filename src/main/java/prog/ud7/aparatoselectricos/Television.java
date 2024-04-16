@@ -9,26 +9,32 @@ package prog.ud7.aparatoselectricos;
  * @author Ana Carbonell Prieto
  */
 public class Television extends Electrodomestico {
+    private final int RESOLUCION_DEFAULT = 20;
+    private final boolean WIFI_INTERNET_DEFAULT = false;
+    
+    private final int RESOLUCION_MAX = 40;
+    private final double PORCENTAJE_PRECIO = 1.3;
+    
     private int resolucion;
     private boolean estaWifiHabilitado;
     private boolean estaConectadaAInternet;
 
-    public Television(String modelo, String marca, String numSerie, boolean tieneCorrienteElectrica) {
-        super(modelo, marca, numSerie, tieneCorrienteElectrica);
-        this.resolucion = 20;
-        this.estaWifiHabilitado = false;
-        this.estaConectadaAInternet = false;
+    public Television(int resolucion, Color color, ConsumoEnergetico consumo, double precio, String modelo, String marca, int peso, String numSerie) {
+        super(color, consumo, precio, modelo, marca, peso, numSerie);
+        this.resolucion = resolucion;
+        this.estaWifiHabilitado = WIFI_INTERNET_DEFAULT;
+        this.estaConectadaAInternet = WIFI_INTERNET_DEFAULT;
     }
     
-    public Television(int resolucion, boolean estaWifiHabilitado, boolean estaConectadaAInternet, Color color, ConsumoEnergetico consumo, double precio, String modelo, String marca, int peso, String numSerie, boolean tieneCorrienteElectrica, boolean estaEncendido) {
-        super(color, consumo, precio, modelo, marca, peso, numSerie, tieneCorrienteElectrica, estaEncendido);
-        this.resolucion = resolucion;
-        this.estaWifiHabilitado = estaWifiHabilitado;
-        this.estaConectadaAInternet = estaConectadaAInternet;
+    public Television(String modelo, String marca, String numSerie) {
+        super(modelo, marca, numSerie);
+        this.resolucion = RESOLUCION_DEFAULT;
+        this.estaWifiHabilitado = WIFI_INTERNET_DEFAULT;
+        this.estaConectadaAInternet = WIFI_INTERNET_DEFAULT;
     }
 
     @Override
     public double obtenerPrecioVenta() {
-        return (this.resolucion > 40) ? super.obtenerPrecioVenta() * 1.3 : super.obtenerPrecioVenta();
+        return (this.resolucion > RESOLUCION_MAX) ? super.obtenerPrecioVenta() * PORCENTAJE_PRECIO : super.obtenerPrecioVenta();
     }
 }
