@@ -27,8 +27,8 @@ public class TestAparatoElectrico {
         aparatos[3] = new Television(14, Color.BLANCO, ConsumoEnergetico.F, 100, "Sony", "MásChulaA", 5, "1234D");
         aparatos[4] = new Computador(2048, 5000, 1024, "1234E");
         aparatos[5] = new Computador(1024, 10000, 2048, "1234F");
-        aparatos[6] = new Movil(Movil.Memoria.MB256, "Samsung", "Galaxy S21", "1234G");
-        aparatos[7] = new Movil(Movil.Memoria.MB512, "Iphone", "21", "1234H");
+        aparatos[6] = new Movil(Movil.Memoria.M256, "Samsung", "Galaxy S21", "1234G");
+        aparatos[7] = new Movil(Movil.Memoria.M512, "Iphone", "21", "1234H");
         
         verListado(aparatos);
     }

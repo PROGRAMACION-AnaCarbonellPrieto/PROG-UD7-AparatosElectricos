@@ -32,7 +32,7 @@ public class Movil extends Dispositivo {
     }
     
     public enum Memoria {
-        MB64("64 MB"), MB128("128 MB"), MB256("256 MB"), MB512("512 MB"), GB1("1 Gb"), GB2("2 Gb");
+        M64("64 MB"), M128("128 MB"), M256("256 MB"), M512("512 MB"), M1("1 Gb"), M2("2 Gb");
         
         private String memoria;
 
