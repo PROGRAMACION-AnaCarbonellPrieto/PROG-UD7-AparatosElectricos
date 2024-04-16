@@ -13,8 +13,8 @@ public class Computador extends Dispositivo {
     private double velocidadCPU;
     private int tamanyoHDD;
 
-    public Computador(int memoriaRam, double velocidadCPU, int tamanyoHDD, boolean conectadoAInteret, String numSerie, boolean tieneCorrienteElectrica, boolean estaEncendido) {
-        super(conectadoAInteret, numSerie, tieneCorrienteElectrica, estaEncendido);
+    public Computador(int memoriaRam, double velocidadCPU, int tamanyoHDD, String numSerie) {
+        super(numSerie);
         this.memoriaRam = memoriaRam;
         this.velocidadCPU = velocidadCPU;
         this.tamanyoHDD = tamanyoHDD;
