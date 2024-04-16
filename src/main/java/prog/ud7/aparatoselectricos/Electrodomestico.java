@@ -8,7 +8,7 @@ package prog.ud7.aparatoselectricos;
  *
  * @author Ana Carbonell Prieto
  */
-public class Electrodomestico extends AparatoElectrico {
+public abstract class Electrodomestico extends AparatoElectrico {
     private Color color;
     private ConsumoEnergetico consumo;
     private double precio;
@@ -19,6 +19,16 @@ public class Electrodomestico extends AparatoElectrico {
     protected enum Color { BLANCO, NEGRO, ROJO, AZUL, GRIS };
     protected enum ConsumoEnergetico { A, B, C, D, E, F };
 
+    public Electrodomestico(String modelo, String marca, String numSerie, boolean tieneCorrienteElectrica, boolean estaEncendido) {
+        super(numSerie, tieneCorrienteElectrica, estaEncendido);
+        this.color = Color.BLANCO;
+        this.consumo = ConsumoEnergetico.F;
+        this.precio = 100;
+        this.modelo = modelo;
+        this.marca = marca;
+        this.peso = 5;
+    }
+    
     public Electrodomestico(Color color, ConsumoEnergetico consumo, double precio, String modelo, String marca, int peso, String numSerie, boolean tieneCorrienteElectrica, boolean estaEncendido) {
         super(numSerie, tieneCorrienteElectrica, estaEncendido);
         this.color = color;
@@ -30,6 +40,19 @@ public class Electrodomestico extends AparatoElectrico {
     }
     
     public double obtenerPrecioVenta() {
-        return -1;
+        switch (this.consumo) {
+            case A:
+                return this.precio + 100;
+            case B:
+                return this.precio + 80;
+            case C:
+                return this.precio + 60;
+            case D:
+                return this.precio + 50;
+            case E:
+                return this.precio + 30;
+            default:
+                return this.precio + 10;
+        }
     }
 }

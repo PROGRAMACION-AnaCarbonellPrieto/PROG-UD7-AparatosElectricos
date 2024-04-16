@@ -8,7 +8,7 @@ package prog.ud7.aparatoselectricos;
  *
  * @author Ana Carbonell Prieto
  */
-public class AparatoElectrico {
+public abstract class AparatoElectrico {
     private String numSerie;
     private boolean tieneCorrienteElectrica;
     private boolean estaEncendido;

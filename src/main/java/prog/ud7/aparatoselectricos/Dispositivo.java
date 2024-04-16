@@ -8,7 +8,7 @@ package prog.ud7.aparatoselectricos;
  *
  * @author Ana Carbonell Prieto
  */
-public class Dispositivo extends AparatoElectrico {
+public abstract class Dispositivo extends AparatoElectrico {
     private boolean conectadoAInteret;
 
     public Dispositivo(boolean conectadoAInteret, String numSerie, boolean tieneCorrienteElectrica, boolean estaEncendido) {
