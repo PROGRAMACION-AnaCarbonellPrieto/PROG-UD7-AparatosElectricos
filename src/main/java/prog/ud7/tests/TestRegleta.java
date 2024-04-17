@@ -4,7 +4,6 @@
  */
 package prog.ud7.tests;
 
-import prog.ud7.aparatoselectricos.AparatoElectrico;
 import prog.ud7.aparatoselectricos.Computador;
 import prog.ud7.aparatoselectricos.Electrodomestico.Color;
 import prog.ud7.aparatoselectricos.Electrodomestico.ConsumoEnergetico;
@@ -13,6 +12,7 @@ import prog.ud7.aparatoselectricos.Movil;
 import prog.ud7.aparatoselectricos.Movil.Memoria;
 import prog.ud7.aparatoselectricos.Regleta;
 import prog.ud7.aparatoselectricos.Television;
+import prog.ud7.interfaces.Enchufable;
 
 /**
  *
@@ -21,7 +21,7 @@ import prog.ud7.aparatoselectricos.Television;
 public class TestRegleta {
     
     public static void main(String[] args) {
-        AparatoElectrico[] aparatos = new AparatoElectrico[4];
+        Enchufable[] aparatos = new Enchufable[4];
         
         aparatos[0] = new Lavadora(5, Color.BLANCO, ConsumoEnergetico.F, 100, "Bosch", "V1", 5, "1234A");
         aparatos[1] = new Television(45, Color.BLANCO, ConsumoEnergetico.F, 100, "LG", "SuperGuay", 5, "1234C");
@@ -32,7 +32,7 @@ public class TestRegleta {
         
         Regleta regleta = new Regleta();
         
-        for (AparatoElectrico aparato: aparatos) {
+        for (Enchufable aparato: aparatos) {
             regleta.enchufar(aparato);
         }
         
@@ -52,7 +52,7 @@ public class TestRegleta {
         
         System.out.println("\n----------Crear móvil con número de serie 1234G ----------\n");
         
-        AparatoElectrico movil = new Movil(Memoria.M512, "Motorola", "S500", "1234G");
+        Enchufable movil = new Movil(Memoria.M512, "Motorola", "S500", "1234G");
         System.out.println(movil);
         
         System.out.println("\n----------Enchufar móvil anterior y obtener mensaje de error ----------\n");

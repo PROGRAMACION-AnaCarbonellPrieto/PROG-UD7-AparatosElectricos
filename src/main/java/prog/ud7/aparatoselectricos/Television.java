@@ -34,6 +34,14 @@ public class Television extends Electrodomestico implements Conectable {
         this.estaWifiHabilitado = WIFI_INTERNET_DEFAULT;
         this.estaConectadaAInternet = WIFI_INTERNET_DEFAULT;
     }
+    
+    public void habilitarWifi() {
+        this.estaWifiHabilitado = true;
+    }
+    
+    public void deshabilitarWifi() {
+        this.estaWifiHabilitado = false;
+    }
 
     @Override
     public double obtenerPrecioVenta() {
