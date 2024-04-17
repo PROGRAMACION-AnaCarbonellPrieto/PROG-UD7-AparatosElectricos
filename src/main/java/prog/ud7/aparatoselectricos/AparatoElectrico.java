@@ -4,6 +4,7 @@
 
 package prog.ud7.aparatoselectricos;
 
+import java.util.Objects;
 import prog.ud7.interfaces.Enchufable;
 
 /**
@@ -26,7 +27,8 @@ public abstract class AparatoElectrico implements Enchufable {
     @Override
     public String toString() {
         return String.format(
-                "Núm.Serie: %s (%s), %s",
+                "[%s] Núm.Serie: %s (%s), %s",
+                getClass().getSimpleName(),
                 this.numSerie,
                 (this.tieneCorrienteElectrica) ? "Con corriente eléctrica" : "Sin corriente eléctrica",
                 (this.estaEncendido) ? "Está encendido" : "No está encendido"
@@ -41,5 +43,19 @@ public abstract class AparatoElectrico implements Enchufable {
     @Override
     public void quitarEnergia() {
         this.tieneCorrienteElectrica = false;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == this) {
+            return true;
+        }
+        
+        if (!(obj instanceof AparatoElectrico)) {
+            return false;
+        }
+        
+        AparatoElectrico aparato = (AparatoElectrico) obj;
+        return aparato.numSerie.equals(this.numSerie);
     }
 }

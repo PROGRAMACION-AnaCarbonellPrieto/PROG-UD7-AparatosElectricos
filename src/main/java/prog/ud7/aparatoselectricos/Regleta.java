@@ -4,6 +4,7 @@
  */
 package prog.ud7.aparatoselectricos;
 
+import java.util.Objects;
 import prog.ud7.interfaces.Enchufable;
 
 /**
@@ -20,12 +21,16 @@ public class Regleta {
     }
     
     public boolean enchufar(Enchufable aparato) {
-        if (obtenerNumeroTomasLibres() == 0 || buscarAparato(aparato) != -1) return false;
+        if (obtenerNumeroTomasLibres() == 0 || buscarAparato(aparato) != -1) {
+            System.out.printf("[%s] El aparato ya está enchufado a la regleta\n", aparato.getClass().getSimpleName());
+            return false;
+        }
         
         for (int i = 0; i < aparatos.length; i++) {
             if (aparatos[i] == null) {
                 aparatos[i] = aparato;
                 aparato.darEnergia();
+                System.out.printf("[%s] Aparato enchufado\n", aparato.getClass().getSimpleName());
                 break;
             }
         }
@@ -39,9 +44,11 @@ public class Regleta {
         if (indice != -1) {
             aparatos[indice] = null;
             aparato.quitarEnergia();
+            System.out.printf("[%s] Aparato desenchufado\n", aparato.getClass().getSimpleName());
             return true;
         }
         
+        System.out.printf("[%s] El aparato no está enchufado a la regleta\n", aparato.getClass().getSimpleName());
         return false;
     }
     
@@ -56,12 +63,16 @@ public class Regleta {
     }
     
     public void listarConectados() {
-        
+        for (Enchufable aparato: aparatos) {
+            if (aparato != null) {
+                System.out.println("\n" + aparato);
+            }
+        }
     }
     
     private int buscarAparato(Enchufable aparato) {
         for (int i = 0; i < aparatos.length; i++) {
-            if (aparatos[i].equals(aparato)) return i;
+            if (Objects.equals(aparatos[i], aparato)) return i;
         }
         
         return -1;
