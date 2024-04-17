@@ -50,9 +50,13 @@ public class TestRouter {
         regleta.enchufar(aparatos[0]);
         aparatos[0].activar();
         
-        System.out.println("\n----------Crear router y emparejar los tres aparatos. Televisión no podrá por no tener habilitado Wifi ----------\n");
+        System.out.println("\n-----------Crear router, conectarlo a la regleta y encenderlo ----------------\n");
         
-        Router router = new Router();
+        Router router = new Router("1234Q");
+        regleta.enchufar(router);
+        router.activar();
+        
+        System.out.println("\n----------Crear router y emparejar los tres aparatos. Televisión no podrá por no tener habilitado Wifi ----------\n");
         
         router.emparejar(tv);
         router.emparejar(pc);

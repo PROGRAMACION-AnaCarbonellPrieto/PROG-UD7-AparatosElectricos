@@ -12,16 +12,19 @@ import prog.ud7.interfaces.Conectable;
  *
  * @author Ana Carbonell Prieto
  */
-public class Router {
+public class Router extends AparatoElectrico {
     private final int CONEXIONES_MAX = 5;
 
     private Conectable[] conexiones;
 
-    public Router() {
+    public Router(String numSerie) {
+        super(numSerie);
         this.conexiones = new Conectable[CONEXIONES_MAX];
     }
 
     public boolean emparejar(Conectable aparato) {
+        if (!comprobarRouterEncendido()) return false;
+        
         if (buscarConexion(aparato) != -1) {
             System.out.printf("[%s] El aparato ya está conectado al router\n", aparato.getClass().getSimpleName());
             return false;
@@ -42,6 +45,8 @@ public class Router {
     }
 
     public boolean desemparejar(Conectable aparato) {
+        if (!comprobarRouterEncendido()) return false;
+        
         int indice = buscarConexion(aparato);
 
         if (indice != -1) {
@@ -65,6 +70,8 @@ public class Router {
     }
 
     public void listarDispositivosEmparejados() {
+        if (!comprobarRouterEncendido()) return;
+        
         for (Conectable aparato: this.conexiones) {
             if (aparato != null) {
                 System.out.println("\n" + aparato);
@@ -73,6 +80,8 @@ public class Router {
     }
 
     public void actualizarDispositivosEmparejados() {
+        if (!comprobarRouterEncendido()) return;
+        
         for (Conectable aparato: this.conexiones) {
             if (aparato != null && !aparato.sePermiteConexion()) {
                 aparato.quitarConexion();
@@ -86,5 +95,23 @@ public class Router {
         }
 
         return -1;
+    }
+    
+    private boolean comprobarRouterEncendido() {
+        if (!this.estaEncendido) {
+            System.out.println("El router no está disponible (sin corriente o no encendido)");
+            return false;
+        }
+        
+        return true;
+    }
+    
+    @Override
+    public void activar() {
+        if (this.tieneCorrienteElectrica) {
+            super.activar();
+        } else {
+            System.out.printf("[%s] No se puede encender (no hay corriente)\n", getClass().getSimpleName());
+        }
     }
 }
