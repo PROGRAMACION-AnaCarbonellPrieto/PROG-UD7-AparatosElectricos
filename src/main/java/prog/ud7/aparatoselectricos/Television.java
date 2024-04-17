@@ -4,11 +4,13 @@
  */
 package prog.ud7.aparatoselectricos;
 
+import prog.ud7.interfaces.Conectable;
+
 /**
  *
  * @author Ana Carbonell Prieto
  */
-public class Television extends Electrodomestico {
+public class Television extends Electrodomestico implements Conectable {
     private final int RESOLUCION_DEFAULT = 20;
     private final boolean WIFI_INTERNET_DEFAULT = false;
     
@@ -36,6 +38,28 @@ public class Television extends Electrodomestico {
     @Override
     public double obtenerPrecioVenta() {
         return (this.resolucion > RESOLUCION_MAX) ? super.obtenerPrecioVenta() * PORCENTAJE_PRECIO : super.obtenerPrecioVenta();
+    }
+
+    @Override
+    public boolean sePermiteConexion() {
+        if (!this.estaEncendido || !this.estaWifiHabilitado) {
+            System.out.printf("[%s] No se ha podido establecer la conexión (sin corriente, apagado o la interfaz wifi no está habilitada)\n", getClass().getSimpleName());
+            return false;
+        }
+
+        return true;
+    }
+
+    @Override
+    public void establecerConexion() {
+        this.estaConectadaAInternet = true;
+        System.out.printf("[%s] Aparato emparejado con éxito\n", getClass().getSimpleName());
+    }
+
+    @Override
+    public void quitarConexion() {
+        this.estaConectadaAInternet = false;
+        System.out.printf("[%s] Aparato desemparejado con éxito\n", getClass().getSimpleName());
     }
     
     @Override

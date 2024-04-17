@@ -61,6 +61,15 @@ public abstract class Electrodomestico extends AparatoElectrico {
                 return this.precio + PRECIO_F;
         }
     }
+
+    @Override
+    public void activar() {
+        if (this.tieneCorrienteElectrica) {
+            super.activar();
+        } else {
+            System.out.printf("[%s] No se puede encender (no hay corriente)\n", getClass().getSimpleName());
+        }
+    }
     
     @Override
     public String toString() {

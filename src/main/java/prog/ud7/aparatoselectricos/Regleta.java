@@ -21,30 +21,29 @@ public class Regleta {
     }
     
     public boolean enchufar(Enchufable aparato) {
-        if (obtenerNumeroTomasLibres() == 0 || buscarAparato(aparato) != -1) {
+        if (buscarAparato(aparato) != -1) {
             System.out.printf("[%s] El aparato ya está enchufado a la regleta\n", aparato.getClass().getSimpleName());
             return false;
         }
         
-        for (int i = 0; i < aparatos.length; i++) {
-            if (aparatos[i] == null) {
-                aparatos[i] = aparato;
+        for (int i = 0; i < this.aparatos.length; i++) {
+            if (this.aparatos[i] == null) {
+                this.aparatos[i] = aparato;
                 aparato.darEnergia();
-                System.out.printf("[%s] Aparato enchufado\n", aparato.getClass().getSimpleName());
-                break;
+                return true;
             }
         }
-        
-        return true;
+
+        System.out.printf("La regleta está llena\n", aparato.getClass().getSimpleName());
+        return false;
     }
     
     public boolean desenchufar(Enchufable aparato) {
         int indice = buscarAparato(aparato);
         
         if (indice != -1) {
-            aparatos[indice] = null;
+            this.aparatos[indice] = null;
             aparato.quitarEnergia();
-            System.out.printf("[%s] Aparato desenchufado\n", aparato.getClass().getSimpleName());
             return true;
         }
         
@@ -55,7 +54,7 @@ public class Regleta {
     public int obtenerNumeroTomasLibres() {
         int contador = 0;
         
-        for (Enchufable aparato: aparatos) {
+        for (Enchufable aparato: this.aparatos) {
             if (aparato == null) contador++;
         }
         
@@ -63,7 +62,7 @@ public class Regleta {
     }
     
     public void listarConectados() {
-        for (Enchufable aparato: aparatos) {
+        for (Enchufable aparato: this.aparatos) {
             if (aparato != null) {
                 System.out.println("\n" + aparato);
             }
@@ -71,7 +70,7 @@ public class Regleta {
     }
     
     private int buscarAparato(Enchufable aparato) {
-        for (int i = 0; i < aparatos.length; i++) {
+        for (int i = 0; i < this.aparatos.length; i++) {
             if (Objects.equals(aparatos[i], aparato)) return i;
         }
         

@@ -27,7 +27,7 @@ public class TestRegleta {
         aparatos[1] = new Television(45, Color.BLANCO, ConsumoEnergetico.F, 100, "LG", "SuperGuay", 5, "1234C");
         aparatos[2] = new Computador(2048, 5000, 1024, "1234E");
         aparatos[3] = new Movil(Memoria.M256, "Samsung", "Galaxy S21", "1234G");
-         
+        
         System.out.println("----------Crear regleta y conectar los cuatro aparatos----------\n");
         
         Regleta regleta = new Regleta();
